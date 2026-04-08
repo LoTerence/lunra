@@ -27,8 +27,8 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
 USER node
 
 # Automatically configure Claude Code settings
-RUN mkdir -p /home/node/.claude && \
-    echo '{\n  "showThinkingSummaries": true\n}' > /home/node/.claude/settings.json
+# RUN mkdir -p /home/node/.claude && \
+#     echo '{\n  "showThinkingSummaries": true\n}' > /home/node/.claude/settings.json
 
 WORKDIR /home/node
 
@@ -56,10 +56,10 @@ RUN cp /home/node/.mitmproxy/mitmproxy-ca-cert.pem /usr/local/share/ca-certifica
 # FINAL WORKSPACE SETUP
 # ==========================================
 
-# Set Claude Code env vars
-ENV ANTHROPIC_API_KEY=HNRGXC9ZFDZA4CMKD3H4J2MN
-ENV ANTHROPIC_BASE_URL=https://app.dataannotation.tech/api/llm_proxy/org_b
-
 # 6. Switch back to the node user for your day-to-day coding
 USER node
 WORKDIR /workspace
+
+# 7. Configure tmux settings
+RUN echo "set-option -g history-limit 100000" > /home/node/.tmux.conf && \
+    echo "set -g mouse on" >> /home/node/.tmux.conf
