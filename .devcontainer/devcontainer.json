@@ -1,5 +1,6 @@
 {
     "name": "Node & Claude Dev Environment",
+    "runArgs": ["--name", "boxing-04_05_26"],
     "build": {
         "dockerfile": "Dockerfile"
     },
