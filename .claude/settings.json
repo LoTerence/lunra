@@ -1,3 +1,4 @@
 {
-    "showThinkingSummaries": true
+    "showThinkingSummaries": true,
+    "autoMemoryEnabled": false
 }

@@ -64,10 +64,6 @@ RUN cp /home/node/.mitmproxy/mitmproxy-ca-cert.pem /usr/local/share/ca-certifica
 USER node
 WORKDIR /workspace
 
-# Automatically create and configure Claude Code settings.json
-RUN mkdir -p /home/node/.claude && \
-    echo '{\n  "showThinkingSummaries": true\n}' > /home/node/.claude/settings.json
-
 
 # Configure tmux settings
 RUN echo "set-option -g history-limit 100000" > /home/node/.tmux.conf && \
