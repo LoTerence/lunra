@@ -26,16 +26,17 @@ WORKDIR /home/node
 ENV PATH="/home/node/.local/bin:${PATH}"
 
 # Install Claude Code as the node user
-RUN curl -fsSL https://claude.ai/install.sh | bash -s 2.1.138
+RUN curl -fsSL https://claude.ai/install.sh | bash -s 2.1.141
+
 
 # ==========================================
 # TRACE EXTRACTOR SETUP
 # ==========================================
 
-
 # Download and extract the zip file
 # The download link will need to be updated on each Boxing task
-RUN curl -o trace_extractor.zip "https://projects-uploaded-files.s3.us-east-2.amazonaws.com/production/item_response_files/_ef924544-553f-48cf-a580-082777d34242_f8441dbc-d4c5-4ecb-81b7-91212fef77a6.zip" && \
+# Current version: cli-trace-extractor v1.8.0
+RUN curl -o trace_extractor.zip "https://projects-uploaded-files.s3.us-east-2.amazonaws.com/production/item_response_files/_ef924544-553f-48cf-a580-082777d34242_61762969-d51c-479b-9a30-a8d1236d9daf.zip" && \
     unzip trace_extractor.zip -d /home/node/ && \
     rm trace_extractor.zip
 
