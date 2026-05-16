@@ -2,7 +2,7 @@
     "name": "Lunra dev environment",
     "runArgs": [
         "--name",
-        "boxing-05_14_26-model-b",
+        "boxing-05_16_26-model-b",
         "--env-file",
         "${localWorkspaceFolder}/.env"
     ],

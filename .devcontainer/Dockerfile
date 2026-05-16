@@ -1,5 +1,8 @@
 FROM node:22-bookworm-slim
 
+# Set the default shell to bash with pipefail
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 # Install system utilities (Added curl, unzip, and ca-certificates)
 RUN apt-get update && apt-get install -y \
     tmux \
@@ -17,7 +20,7 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
     mv /root/.local/bin/uv /usr/local/bin/ && \
     mv /root/.local/bin/uvx /usr/local/bin/
 
-    
+
 # Switch to your non-root user
 USER node
 WORKDIR /home/node
@@ -26,7 +29,7 @@ WORKDIR /home/node
 ENV PATH="/home/node/.local/bin:${PATH}"
 
 # Install Claude Code as the node user
-RUN curl -fsSL https://claude.ai/install.sh | bash -s 2.1.141
+RUN curl -fsSL https://claude.ai/install.sh | bash -s 2.1.143
 
 
 # ==========================================
@@ -66,5 +69,6 @@ WORKDIR /workspace
 
 
 # Configure tmux settings
+# enable mouse scrolling and increase the scrollback history limit
 RUN echo "set-option -g history-limit 100000" > /home/node/.tmux.conf && \
     echo "set -g mouse on" >> /home/node/.tmux.conf
