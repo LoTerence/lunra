@@ -21,6 +21,10 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh && \
     mv /root/.local/bin/uvx /usr/local/bin/
 
 
+# ==========================================
+# INSTALL CLAUDE CODE
+# ==========================================
+
 # Switch to your non-root user
 USER node
 WORKDIR /home/node
